@@ -49,19 +49,24 @@ const filterdItems = computed(() => {
     }
     if (searchMode.value === 0) {
         return list.value?.filter((el) => {
-            return el.title.toLowerCase().indexOf(search.value?.toLowerCase()) > -1;
+            return el.title.toLowerCase().indexOf(search.value.toLowerCase()) > -1;
         })
     }
     if (searchMode.value === 1) {
         return list.value?.filter((el) => {
-            return String(el.price).indexOf(search.value?.toLowerCase()) > -1;
+            return String(el.price).indexOf(search.value.toLowerCase()) > -1;
         })
     }
-    return
+    return []
 })
 
 const init = async () => {
-    list.value = await apiGetJson()
+    try{
+        list.value = await apiGetJson()
+    }
+    catch{
+        alert('Ошибка запроса')
+    }
 }
 
 onMounted(init)

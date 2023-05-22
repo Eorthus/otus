@@ -1,7 +1,7 @@
 <template>
     <div class="tw-flex tw-shadow-sm tw-bg-white">
-        <button class="tw-px-4" @click="changeSearchModeHandler(0)">T</button>
-        <button class="tw-px-4" @click="changeSearchModeHandler(1)">$</button>
+        <button class="tw-px-4" @click="changeSearchModeHandler(1)" :class="{'tw-bg-neutral-100':searchMode===1}">$</button>
+        <button class="tw-px-4" @click="changeSearchModeHandler(0)" :class="{'tw-bg-neutral-100':searchMode===0}">T</button>
         <input class="tw-w-full font-h4 tw-border-0 tw-p-4 placeholder:tw-text-neutral-500" autofocus autocomplete="off"
             :placeholder="searchMode === 0 ? 'Search by title...' : 'Search by price...'"
             @input="$emit('search', ($event.target as HTMLInputElement).value)" />
