@@ -1,5 +1,4 @@
 <template>
-    <h1 class="font-h1 tw-text-lime-500 tw-text-center tw-mb-6">Products</h1>
     <div class="tw-flex tw-shadow-sm tw-bg-white">
         <button class="tw-px-4" @click="changeSearchModeHandler(0)">T</button>
         <button class="tw-px-4" @click="changeSearchModeHandler(1)">$</button>
