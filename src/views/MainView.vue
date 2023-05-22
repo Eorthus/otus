@@ -1,15 +1,9 @@
 <template>
-    <MainLayout>
-        <input id="toggle-all" class="toggle-all" type="checkbox" />
-        <label for="toggle-all">Mark all as complete</label>
-        <ul class="todo-list">
-            <li class="todo" v-for="item in list" :key="item.id">
-                <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label> #{{ item.id }} {{ item.title }}</label>
-                    <button class="destroy"></button>
-                </div>
-                <input class="edit" type="text" />
+    <MainLayout :items="list">
+        <ul>
+            <li class="tw-relative tw-border-0 tw-border-b tw-border-solid tw-border-neutral-200 last-child:border-b-0 tw-flex tw-px-4 tw-py-2 tw-flex-col" v-for="item in list" :key="item.id">
+                    <span><span class="tw-text-lime-300 font-h6">#{{ item.id }}</span>&nbsp;{{ item.title }}</span>
+                    <span class="font-h6 tw-text-neutral-300">${{ item.price }}</span>
             </li>
         </ul>
     </MainLayout>
@@ -19,16 +13,8 @@
 import MainLayout from '@/layouts/MainLayout.vue'
 import { ref, onMounted } from 'vue'
 import { apiGetJson } from '@/api/api'
+import {ArrayItemsTypes} from '@/types/products'
 
-type ArrayItemsTypes = {
-    category: string
-    description: string
-    id: number
-    image: string
-    price: number
-    title: string
-    rating: { count: number; rate: number }
-}
 
 const list = ref<Array<ArrayItemsTypes>>()
 

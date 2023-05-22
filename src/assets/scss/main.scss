@@ -1,6 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+html,
+body {
+    @apply tw-m-0 tw-p-0;
+}
 
-@import './base.scss';
-@import './index.scss';
+ul {
+    @apply tw-p-0 tw-m-0 tw-list-none;
+}
+
+button {
+    @apply tw-text-lime-500;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-family: inherit;
+    font-weight: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:hover {
+        @apply tw-text-lime-300;
+    }
+}
+
+a {
+    @apply tw-text-lime-500 tw-no-underline;
+    &:hover {
+        @apply tw-text-lime-300;
+    }
+}
+
+body {
+    @apply tw-text-neutral-800 tw-bg-neutral-100 font-normal-14;
+    min-width: 230px;
+    max-width: 550px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:focus {
+    outline: 0;
+}
