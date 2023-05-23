@@ -8,7 +8,7 @@
         </RouterLink>
       </button>
       <button class="tw-p-4">
-        <RouterLink :to="{name:'home.add'}">
+        <RouterLink :to="{name:'home.send'}">
         <SendIcon class="tw-w-5 tw-h-5" />
       </RouterLink>
       </button>

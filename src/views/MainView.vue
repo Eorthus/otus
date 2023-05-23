@@ -1,13 +1,14 @@
 <template>
-    <MainLayout>
+    <MainLayout :class="{ isLoading }">
         <template #header>
-            <MainHeader :items="list" @search="search = $event" @search-mode="searchMode = $event" :class="{'isLoading': route.matched[1].name!=='home.list'}" />
+            <MainHeader :items="list" @search="search = $event" @search-mode="searchMode = $event"
+                :class="{ 'isLoading': route.matched[1].name !== 'home.list' }" />
         </template>
         <template #main>
-            <RouterView :items="list" :search="search" :search-mode="searchMode" @add="addItemHandler"/>
+            <RouterView :items="list" :search="search" :search-mode="searchMode" @add="addItemHandler" />
         </template>
         <template #footer>
-            <MainFooter :items="list" @send-form="mode=2" @add-item="mode=1"/>
+            <MainFooter :items="list" />
             <section class="tw-mx-auto tw-my-6 tw-text-neutral-400 tw-text-center font-small-medium">
                 <p>
                     Written by
@@ -29,7 +30,7 @@ import { apiGetJson } from '@/api/api'
 import { ArrayItemsTypes } from '@/types/products'
 import MainHeader from '@/components/navigation/MainHeader.vue'
 import MainFooter from '@/components/navigation/MainFooter.vue'
-import {useRouter, useRoute} from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
 
@@ -41,17 +42,23 @@ const search = ref<string>()
 
 const searchMode = ref<number>(0)
 
-const addItemHandler = form=>{
-list.value.push(form)
-router.push({name:'home.list'})
+const isLoading = ref(false)
+
+const addItemHandler = (form: ArrayItemsTypes) => {
+    list.value?.push(form)
+    router.push({ name: 'home.list' })
 }
 
 const init = async () => {
+    isLoading.value = true
     try {
         list.value = await apiGetJson()
     }
     catch {
-        alert('Ошибка запроса')
+        alert('Error request')
+    }
+    finally{
+        isLoading.value = false
     }
 }
 

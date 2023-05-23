@@ -18,12 +18,12 @@ const router = createRouter({
           path: 'add',
           name: 'home.add',
           component: () => import('@/components/forms/MainAddForm.vue')
-        }
-        // {
-        //   path: 'send',
-        //   name: 'home.send',
-        //   component: () => import('@/components/main/MainList.vue'),
-        // },
+        },
+        {
+          path: 'send',
+          name: 'home.send',
+          component: () => import('@/components/forms/MainSendForm.vue'),
+        },
       ]
     }
   ]
