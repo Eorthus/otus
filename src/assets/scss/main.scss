@@ -24,6 +24,9 @@ button {
     &:hover {
         @apply tw-text-lime-300;
     }
+    &:disabled{
+        @apply tw-pointer-events-none tw-text-neutral-500 tw-border-neutral-500;
+    }
 }
 
 a {
@@ -44,4 +47,17 @@ body {
 
 :focus {
     outline: 0;
+}
+
+input, textarea, select {
+    @apply tw-border tw-border-neutral-300 tw-min-h-[40px] tw-rounded-sm tw-p-2;
+
+    &:hover, &:focus, &:active{
+        @apply tw-border-lime-500;
+    }
+}
+
+.isLoading {
+    backdrop-filter: blur(5px);
+    pointer-events: none;
 }
