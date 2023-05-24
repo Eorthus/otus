@@ -4,12 +4,7 @@
         <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
             <li class="todo" v-for="item in list" :key="item.id">
-                <div class="view">
-                    <input class="toggle" type="checkbox" />
-                    <label> #{{ item.id }} {{ item.title }}</label>
-                    <button class="destroy"></button>
-                </div>
-                <input class="edit" type="text" />
+                <MainListItem :item="item" />
             </li>
         </ul>
     </MainLayout>
@@ -19,16 +14,8 @@
 import MainLayout from '@/layouts/MainLayout.vue'
 import { ref, onMounted } from 'vue'
 import { apiGetJson } from '@/api/api'
-
-type ArrayItemsTypes = {
-    category: string
-    description: string
-    id: number
-    image: string
-    price: number
-    title: string
-    rating: { count: number; rate: number }
-}
+import MainListItem from '@/components/main/MainListItem.vue';
+import { ArrayItemsTypes } from '@/types/products'
 
 const list = ref<Array<ArrayItemsTypes>>()
 
