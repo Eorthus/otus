@@ -4,22 +4,23 @@
         <!-- fio -->
         <div class="tw-flex tw-space-between tw-gap-6">
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.name" name="name" type="text" :rules="requiredRule" placeholder="Name" />
+                <Field v-model="form.name" name="name" type="text" :rules="wordRule" placeholder="Name" />
                 <ErrorMessage class="tw-text-red-500" name="name" />
             </div>
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.surname" name="surname" type="text" :rules="requiredRule" placeholder="Surname" />
+                <Field v-model="form.surname" name="surname" type="text" :rules="wordRule" placeholder="Surname" />
                 <ErrorMessage class="tw-text-red-500" name="surname" />
             </div>
         </div>
         <!-- contacts -->
         <div class="tw-flex tw-space-between tw-gap-6">
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.phone" name="phone" type="text" :rules="requiredRule" placeholder="Phone" />
+                <Field v-model="form.phone" name="phone" type="text" :rules="telRule" placeholder="Phone" />
                 <ErrorMessage class="tw-text-red-500" name="phone" />
             </div>
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.email" name="email" type="email" placeholder="Email" />
+                <Field v-model="form.email" name="email" type="email" :rules="emailRule" placeholder="Email" />
+                <ErrorMessage class="tw-text-red-500" name="email" />
             </div>
         </div>
         <!-- address -->
@@ -50,7 +51,7 @@
 
 <script setup lang="ts">
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import { requiredRule, agreementRule } from '@/utils/validationRules'
+import { requiredRule, agreementRule, telRule, emailRule,wordRule } from '@/utils/validationRules'
 import { apiPostJson } from '@/api/api'
 import { ref } from 'vue'
 import { SendItem } from '@/types/products'

@@ -31,6 +31,7 @@ import { ArrayItemsTypes } from '@/types/products'
 import MainHeader from '@/components/navigation/MainHeader.vue'
 import MainFooter from '@/components/navigation/MainFooter.vue'
 import { useRouter, useRoute } from 'vue-router'
+import { searchModes } from '@/utils/maps'
 
 const router = useRouter()
 
@@ -40,7 +41,7 @@ const list = ref<Array<ArrayItemsTypes>>()
 
 const search = ref<string>()
 
-const searchMode = ref<number>(0)
+const searchMode = ref<number>(searchModes.title)
 
 const isLoading = ref(false)
 
@@ -57,7 +58,7 @@ const init = async () => {
     catch {
         alert('Error request')
     }
-    finally{
+    finally {
         isLoading.value = false
     }
 }
