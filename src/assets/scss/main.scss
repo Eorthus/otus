@@ -63,3 +63,7 @@ input:not([type="checkbox"]), textarea, select {
     pointer-events: none;
     user-select: none;
 }
+
+.icon-20{
+    @apply tw-w-5 tw-h-5;
+}

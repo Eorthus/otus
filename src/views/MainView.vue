@@ -1,14 +1,14 @@
 <template>
-    <MainLayout :class="{ isLoading }">
+    <MainLayout>
         <template #header>
-            <MainHeader :items="list" @search="search = $event" @search-mode="searchMode = $event"
-                :class="{ 'isLoading': route.matched[1].name !== 'home.list' }" />
+            <MainNavigation />
         </template>
         <template #main>
-            <RouterView :items="list" :search="search" :search-mode="searchMode" @add="addItemHandler" />
+            <RouterView
+                @add-cart="addCartHandler" @checkout="checkoutHandler" :selected-items="cartItems"
+                @change-selected="cartItems = $event" />
         </template>
         <template #footer>
-            <MainFooter :items="list" />
             <section class="tw-mx-auto tw-my-6 tw-text-neutral-400 tw-text-center font-small-medium">
                 <p>
                     Written by
@@ -25,44 +25,22 @@
 
 <script setup lang="ts">
 import MainLayout from '@/layouts/MainLayout.vue'
-import { ref, onMounted } from 'vue'
-import { apiGetJson } from '@/api/api'
-import { ArrayItemsTypes } from '@/types/products'
-import MainHeader from '@/components/navigation/MainHeader.vue'
-import MainFooter from '@/components/navigation/MainFooter.vue'
-import { useRouter, useRoute } from 'vue-router'
-import { searchModes } from '@/utils/maps'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import MainNavigation from '@/components/navigation/MainNavigation.vue'
+import { routeNames } from '@/router/routeNames'
 
 const router = useRouter()
 
-const route = useRoute()
+const cartItems = ref<Array<number>>([])
 
-const list = ref<Array<ArrayItemsTypes>>()
-
-const search = ref<string>()
-
-const searchMode = ref<number>(searchModes.title)
-
-const isLoading = ref(false)
-
-const addItemHandler = (form: ArrayItemsTypes) => {
-    list.value?.push(form)
-    router.push({ name: 'home.list' })
+const checkoutHandler = (id: number) => {
+    cartItems.value = [id]
+    router.push({ name: routeNames.cart })
 }
 
-const init = async () => {
-    isLoading.value = true
-    try {
-        list.value = await apiGetJson()
-    }
-    catch {
-        alert('Error request')
-    }
-    finally {
-        isLoading.value = false
-    }
+const addCartHandler = (id: number) => {
+    cartItems.value.push(id)
 }
-
-onMounted(init)
 
 </script>

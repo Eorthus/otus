@@ -1,6 +1,6 @@
 <template>
     <span class="tw-block tw-px-6 tw-pt-6 font-h2 tw-text-neutral-500">Send customer data</span>
-    <Form class="tw-flex tw-flex-col tw-gap-6 tw-p-6" @submit="submitHandler">
+    <Form class="tw-flex tw-flex-col tw-gap-6 tw-p-6" @submit="emit('submit',form)">
         <!-- fio -->
         <div class="tw-flex tw-space-between tw-gap-6">
             <div class="tw-w-full tw-flex tw-flex-col">
@@ -41,10 +41,10 @@
         </div>
         <div class="tw-ml-auto">
             <button class="tw-p-4 tw-border tw-border-solid tw-border-lime-500 tw-rounded-sm tw-mr-6">
-                <RouterLink :to="{ name: 'home.list' }">Отменить</RouterLink>
+                <RouterLink :to="{ name: routeNames.main  }">Cancel</RouterLink>
             </button>
             <button class="tw-p-4 tw-border tw-border-solid tw-border-lime-500 tw-rounded-sm" type="submit"
-                >Отправить</button>
+                >Send</button>
         </div>
     </Form>
 </template>
@@ -52,12 +52,15 @@
 <script setup lang="ts">
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { requiredRule, agreementRule, telRule, emailRule,wordRule } from '@/utils/validationRules'
-import { apiPostJson } from '@/api/api'
 import { ref } from 'vue'
 import { SendItem } from '@/types/products'
+import { routeNames } from '@/router/routeNames'
 
+type EmitsTypes = {
+    (e: 'submit', value: SendItem): void
+}
 
-const isLoading = ref<boolean>()
+const emit = defineEmits<EmitsTypes>()
 
 const form = ref<SendItem>({
     name: '',
@@ -68,18 +71,4 @@ const form = ref<SendItem>({
     comment: '',
     agreement: false,
 })
-
-const submitHandler = async () => {
-    isLoading.value = true
-    try {
-        await apiPostJson(form.value)
-        alert('Send succesful')
-    }
-    catch {
-        alert('Error request')
-    }
-    finally {
-        isLoading.value = false
-    }
-}
 </script>
