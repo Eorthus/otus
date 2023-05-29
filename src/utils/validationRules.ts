@@ -38,7 +38,7 @@ export const moneyRule = (value:any)=>{
     return true
   }
 
-  return 'Должно быть валидно'
+  return 'Invalid number'
 }
 
 export const agreementRule = (value: any) => {

@@ -7,7 +7,7 @@
         </div>
         <div class="tw-flex tw-space-between tw-gap-6">
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.price" name="price" type="number" :rules="requiredRule" placeholder="Price" />
+                <Field v-model="form.price" name="price" type="number" :rules="moneyRule" placeholder="Price" />
                 <ErrorMessage class="tw-text-red-500" name="price" />
             </div>
             <div class="tw-w-full tw-flex tw-flex-col">
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { Form, Field, ErrorMessage } from 'vee-validate';
-import { requiredRule } from '@/utils/validationRules';
+import { requiredRule, moneyRule } from '@/utils/validationRules';
 import { ref } from 'vue'
 import { ArrayItemsTypes } from '@/types/products'
 
