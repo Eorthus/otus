@@ -37,8 +37,8 @@ type PropsTypes = {
     cartMode: boolean
 }
 type EmitsTypes = {
-    (e: 'checkout', value: number): void
-    (e: 'add-cart', value: number): void
+    (e: 'checkout', value: number|undefined): void
+    (e: 'add-cart', value: number|undefined): void
     (e: 'delete-item'): void
 }
 

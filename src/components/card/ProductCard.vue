@@ -12,10 +12,10 @@
                         item?.rating?.count }} comments)
                 </span>
                 <div class="tw-mt-6 tw-flex tw-gap-2">
-                    <button @click="emit('add-cart', +item?.id)">
+                    <button @click="addHandler(item?.id)">
                         <CartIcon class="icon-20 tw-m-1" />
                     </button>
-                    <button @click="emit('checkout', +item?.id)">
+                    <button @click="checkHandler(item?.id)">
                         <PlusIcon class="icon-20 tw-m-1" />
                     </button>
                 </div>
@@ -33,14 +33,10 @@ import { apiGetJson } from '@/api/api';
 import { ref, onMounted } from 'vue';
 import StarIcon from '@/components/icons/StarIcon.vue'
 import CartIcon from '@/components/icons/CartIcon.vue'
-import PlusIcon from '@/components/icons/PlusIcon.vue';
+import PlusIcon from '@/components/icons/PlusIcon.vue'
+import { useCartStore } from '@/stores/cart'
 
-type EmitsTypes = {
-    (e: 'checkout', value: number): void
-    (e: 'add-cart', value: number): void
-}
-
-const emit = defineEmits<EmitsTypes>()
+const { addCartHandler, checkoutHandler } = useCartStore()
 
 const products = ref<Array<ArrayItemsTypes>>([])
 
@@ -48,7 +44,16 @@ const isLoading = ref<boolean>(false)
 
 const route = useRoute()
 
-const item = computed(() => products.value.find(el => +el.id === +route.params.id))
+const item = computed(() => products.value?.find(el => +el.id === +route.params.id))
+
+const addHandler = (id: number|undefined) => {
+    addCartHandler(id)
+}
+
+const checkHandler = (id:number|undefined) =>{
+checkoutHandler(id)
+}
+
 
 const init = async () => {
     isLoading.value = true

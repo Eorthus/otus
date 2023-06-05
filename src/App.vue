@@ -14,7 +14,6 @@ router.beforeEach((to) => {
   }
 
   const DEFAULT_TITLE = 'Products'
-  console.log(to.meta.title)
   if (to.meta.title) {
     document.title = `${to.meta.title} | ${DEFAULT_TITLE}`
     return

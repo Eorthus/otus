@@ -41,9 +41,7 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const signOut = () => {
-    console.log(authUserData)
     userState.value = authUserData
-    console.log(userState.value)
     router.push({ name: routeNames.login })
   }
 

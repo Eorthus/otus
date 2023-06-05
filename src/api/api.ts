@@ -7,7 +7,7 @@ export const apiGetJson = async () => {
   return data
 }
 
-export const apiPostOrderJson = async (form: SendItem, items: Array<number>|undefined) => {
+export const apiPostOrderJson = async (form: SendItem, items: Array<number|undefined>|undefined) => {
   const { data } = await POST('https://httpbin.org/post', { items, form })
 
   return data
