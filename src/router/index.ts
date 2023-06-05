@@ -39,20 +39,16 @@ const router = createRouter({
           name: routeNames.card,
           component: () => import('@/components/card/ProductCard.vue'),
           meta: { title: 'Product card' }
+        },
+        {
+          path: 'login',
+          name: routeNames.login,
+          component: () => import('@/views/LoginView.vue'),
+          meta: { title: 'Login' }
         }
       ]
     }
   ]
-})
-
-router.beforeEach((to) => {
-  const DEFAULT_TITLE = 'Products'
-  console.log(to.meta.title)
-  if (to.meta.title) {
-    document.title = `${to.meta.title} | ${DEFAULT_TITLE}`
-    return
-  }
-  document.title = DEFAULT_TITLE
 })
 
 export default router

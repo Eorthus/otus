@@ -44,7 +44,7 @@ import { ref, reactive } from 'vue'
 import { ArrayItemsSendTypes } from '@/types/products'
 import { routeNames } from '@/router/routeNames'
 import { apiPostItemJson } from '@/api/api'
-import { NavigationGuard, NavigationGuardNext, onBeforeRouteLeave, RouteComponent, RouteLocation, RouteLocationNamedRaw, RouteLocationNormalized, RouteLocationOptions, RouteParams, RouteParamValue, RouteRecord, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 const categories: Array<string> = ['Category 1', 'Category 2', 'Category 3']
 

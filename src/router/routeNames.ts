@@ -3,5 +3,6 @@ export const routeNames = {
     card: 'main.card',
     add:'main.add',
     send:'main.send',
-    cart:'main.cart'
+    cart:'main.cart',
+    login:'login'
 }

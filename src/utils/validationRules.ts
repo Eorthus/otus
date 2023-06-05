@@ -12,6 +12,10 @@ export const wordRule = (value:any)=>{
   )
 }
 
+export const passwordRule = (value:any)=>{
+    return value.length<6 ? 'Input at least 6 symbols' : true
+}
+
 export const telRule = (value:any) =>{
   return (
     ((String(value).length > 9 || String(value).length < 17) && parsePhoneNumber(String(value), 'RU')?.isValid()) ||
