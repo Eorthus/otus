@@ -1,11 +1,10 @@
 <template>
     <MainLayout>
-        <template #header>
+        <template v-if="userState" #header>
             <MainNavigation />
         </template>
         <template #main>
-            <RouterView
-                @add-cart="addCartHandler" @checkout="checkoutHandler" :selected-items="cartItems"
+            <RouterView @add-cart="addCartHandler" @checkout="checkoutHandler" :selected-items="cartItems"
                 @change-selected="cartItems = $event" />
         </template>
         <template #footer>
@@ -29,8 +28,12 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import MainNavigation from '@/components/navigation/MainNavigation.vue'
 import { routeNames } from '@/router/routeNames'
+import { useAuthStore } from '@/stores/auth'
+import { storeToRefs } from 'pinia'
 
 const router = useRouter()
+
+const { userState } = storeToRefs(useAuthStore())
 
 const cartItems = ref<Array<number>>([])
 

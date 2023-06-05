@@ -1,5 +1,5 @@
 <template>
-    <button :class="{'tw-mr-auto':index===0}">
+    <button>
         <RouterLink class="tw-p-4 tw-block" :to="item.to">
             <component :is="item.component" class="icon-20" />
         </RouterLink>
