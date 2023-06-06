@@ -24,19 +24,15 @@
 </template>
 
 <script setup lang="ts">
-// import { ArrayItemsTypes } from '@/types/products'
 import MainListItem from '@/components/main/MainListItem.vue'
-import { onMounted } from 'vue'
 import MainSendForm from '../forms/MainSendForm.vue';
 import { useCartStore } from '@/stores/cart'
 import { storeToRefs } from 'pinia';
 
 const { items, isLoading } = storeToRefs(useCartStore())
-const { submitHandler, getProducts } = useCartStore()
+const { submitHandler } = useCartStore()
 
 const deleteItemHandler = (index: number) => {
     items.value.splice(index, 1)
 }
-
-onMounted(getProducts)
 </script>
