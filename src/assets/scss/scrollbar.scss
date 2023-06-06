@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    @apply tw-rounded-xl tw-bg-neutral-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply tw-rounded-xl tw-bg-neutral-300;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply tw-rounded-xl tw-bg-neutral-100;
+  }
+  
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.neutral.300') theme('colors.neutral.100');
+  }
