@@ -1,8 +1,8 @@
 import { defineStore, storeToRefs } from 'pinia'
 import { ref, watch } from 'vue'
-import { ArrayItemsTypes } from '@/types/products'
+import { type ArrayItemsTypes } from '@/types/products'
 import { apiPostOrderJson } from '@/api/api'
-import { SendItem } from '@/types/products'
+import { type SendItem } from '@/types/products'
 import { routeNames } from '@/router/routeNames'
 import { useRouter } from 'vue-router'
 import { useCatalogStore } from './catalog'
@@ -14,17 +14,17 @@ export const useCartStore = defineStore('cart', () => {
 
   const isLoading = ref<boolean>(false)
 
-  const items = ref<Array<ArrayItemsTypes>>([])
+  const items = ref<Array<ArrayItemsTypes | undefined>>([])
 
   const cartItems = ref<Array<number | undefined>>([])
 
-  const checkoutHandler = (id: number | undefined) => {
+  const checkoutHandler = (id?: number) => {
     cartItems.value = [id]
-    items.value.push(list.value.find((el2: ArrayItemsTypes) => +el2.id === +id))
+    items.value?.push(list.value.find((el2: ArrayItemsTypes) => +el2.id === +id))
     router.push({ name: routeNames.cart })
   }
 
-  const addCartHandler = (id: number | undefined) => {
+  const addCartHandler = (id?: number) => {
     cartItems.value.push(id)
     items.value.push(list.value.find((el2: ArrayItemsTypes) => +el2.id === +id))
   }

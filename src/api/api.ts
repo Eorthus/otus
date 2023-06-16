@@ -1,5 +1,5 @@
-import { GET, POST } from '@/service/axios.js'
-import { SendItem, ArrayItemsSendTypes } from '@/types/products'
+import { GET, POST } from '@/service/axios'
+import { type SendItem, type ArrayItemsSendTypes } from '@/types/products'
 
 export const apiGetJson = async () => {
   const { data } = await GET('https://fakestoreapi.com/products')

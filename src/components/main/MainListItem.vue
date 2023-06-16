@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { ArrayItemsTypes } from '@/types/products'
+import { type ArrayItemsTypes } from '@/types/products'
 import { routeNames } from '@/router/routeNames'
 import CartIcon from '@/components/icons/CartIcon.vue'
 import PlusIcon from '@/components/icons/PlusIcon.vue';

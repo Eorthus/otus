@@ -58,7 +58,7 @@
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { requiredRule, agreementRule, telRule, emailRule, wordRule, passwordRule } from '@/utils/validationRules'
 import { ref } from 'vue'
-import { RegistrationType } from '@/types/auth'
+import { type RegistrationType } from '@/types/auth'
 import { routeNames } from '@/router/routeNames'
 import { useAuthStore } from '@/stores/auth'
 

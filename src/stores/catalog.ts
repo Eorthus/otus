@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { searchModes } from '@/utils/maps'
 import { searchHandler } from '@/utils/searchHandler'
-import { ArrayItemsTypes } from '@/types/products'
+import { type ArrayItemsTypes } from '@/types/products'
 import { apiGetJson } from '@/api/api'
 
 export const useCatalogStore = defineStore('catalog', () => {

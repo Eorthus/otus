@@ -11,8 +11,8 @@
                 </ul>
             </div>
             <div class=" tw-p-4 tw-pt-0 tw-flex tw-flex-col">
-                <span>Total count: <span class="tw-text-lime-500">{{ items.length }}</span></span>
-                <span>Total price: <span class="tw-text-lime-500">{{ items.reduce((acc, el) => acc + el.price, 0) }}
+                <span>Total count: <span class="tw-text-lime-500" data-test="count">{{ items.length }}</span></span>
+                <span>Total price: <span class="tw-text-lime-500" data-test="price">{{ items.reduce((acc, el) => acc + el.price, 0) }}
                         $</span></span>
             </div>
             <MainSendForm @submit="submitHandler" />

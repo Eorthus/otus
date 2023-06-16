@@ -1,13 +1,13 @@
 <template>
-    <Form class="tw-flex tw-flex-col tw-gap-6 tw-p-6" @submit="submitHandler">
+    <Form class="tw-flex tw-flex-col tw-gap-6 tw-p-6" data-test="form" @submit="submitHandler">
         <span class="tw-block tw-pb-6 font-h2 tw-text-neutral-500">Authorization form</span>
         <div class="tw-flex tw-space-between tw-gap-6">
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.login" name="login" type="text" :rules="requiredRule" placeholder="Login" />
+                <Field v-model="form.login" name="login" type="text" data-test="login" :rules="requiredRule" placeholder="Login" />
                 <ErrorMessage class="tw-text-red-500" name="login" />
             </div>
             <div class="tw-w-full tw-flex tw-flex-col">
-                <Field v-model="form.password" name="password" type="text" :rules="passwordRule" placeholder="Password" />
+                <Field v-model="form.password" name="password" type="text" data-test="password" :rules="passwordRule" placeholder="Password" />
                 <ErrorMessage class="tw-text-red-500" name="password" />
             </div>
         </div>
@@ -25,7 +25,7 @@
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { requiredRule, passwordRule } from '@/utils/validationRules'
 import { ref } from 'vue'
-import { RegistrationType } from '@/types/auth'
+import { type RegistrationType } from '@/types/auth'
 import { routeNames } from '@/router/routeNames'
 import { useAuthStore } from '@/stores/auth'
 

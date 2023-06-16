@@ -52,7 +52,7 @@
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { requiredRule, agreementRule, telRule, emailRule, wordRule } from '@/utils/validationRules'
 import { ref } from 'vue'
-import { SendItem } from '@/types/products'
+import { type SendItem } from '@/types/products'
 import { routeNames } from '@/router/routeNames'
 import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'

@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { ArrayItemsTypes } from '@/types/products'
+import { type ArrayItemsTypes } from '@/types/products'
 import { computed } from 'vue'
 import { apiGetJson } from '@/api/api';
 import { ref, onMounted } from 'vue';

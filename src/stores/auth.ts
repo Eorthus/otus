@@ -1,6 +1,6 @@
 import { ref, reactive } from 'vue'
 import { defineStore } from 'pinia'
-import { RegistrationType, AuthType } from '@/types/auth'
+import { type RegistrationType, type AuthType } from '@/types/auth'
 import { useRouter } from 'vue-router'
 import { routeNames } from '@/router/routeNames'
 import { useStorage } from '@vueuse/core'
@@ -45,5 +45,5 @@ export const useAuthStore = defineStore('auth', () => {
     router.push({ name: routeNames.login })
   }
 
-  return { userState, signUp, signIn, signOut }
+  return { userState, usersState, signUp, signIn, signOut }
 })
